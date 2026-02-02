@@ -53,18 +53,18 @@ export const Dashboard: React.FC<DashboardProps> = ({
               </div>
               <div>
                 <div className="flex items-center gap-3">
-                  <h2 className="text-xl md:text-2xl font-black tracking-tighter">{company.fullName}</h2>
+                  <h2 className="text-lg md:text-xl font-black tracking-tighter">{company.fullName}</h2>
                   {isAdmin && (
                       <button 
                         onClick={() => onEditCompany(company.id)}
-                        className="px-3 py-1 bg-white/10 hover:bg-white/20 text-amber-500 rounded-lg transition flex items-center gap-2 text-xs font-bold"
+                        className="px-3 py-1 bg-white/10 hover:bg-white/20 text-amber-500 rounded-lg transition flex items-center gap-2 text-[10px] font-bold"
                         title={t('edit_company_data')}
                       >
                         <Edit className="w-3 h-3" /> تعديل البيانات
                       </button>
                   )}
                 </div>
-                <p className="text-slate-400 font-bold mt-1 text-xs tracking-wide uppercase">{company.description}</p>
+                <p className="text-slate-400 font-bold mt-1 text-[10px] tracking-wide uppercase">{company.description}</p>
               </div>
             </div>
             
@@ -87,7 +87,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <button 
             onClick={handleAIAnalysis}
             disabled={loadingAI || projects.length === 0}
-            className="flex items-center gap-2 bg-amber-500 text-slate-950 px-6 py-3 rounded-xl font-black shadow-xl shadow-amber-500/20 hover:bg-amber-400 transition-all hover:-translate-y-1 disabled:opacity-50 text-sm"
+            className="flex items-center gap-2 bg-amber-500 text-slate-950 px-6 py-3 rounded-xl font-black shadow-xl shadow-amber-500/20 hover:bg-amber-400 transition-all hover:-translate-y-1 disabled:opacity-50 text-xs"
           >
             {loadingAI ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
             {t('ai_analysis')}
@@ -102,7 +102,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               </div>
               <div>
                   <p className="text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">{t('active_projects')}</p>
-                  <p className="text-3xl font-black text-slate-900 dark:text-white leading-none">{projects.length}</p>
+                  <p className="text-2xl font-black text-slate-900 dark:text-white leading-none">{projects.length}</p>
               </div>
               <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-2xl text-blue-600">
                   <Briefcase className="w-6 h-6" />
@@ -115,7 +115,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               </div>
               <div>
                   <p className="text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">{t('total_contracts')}</p>
-                  <p className="text-3xl font-black text-slate-900 dark:text-white leading-none">{projects.reduce((a,b) => a + b.contractValue, 0).toLocaleString()} <span className="text-xs font-bold text-slate-400">SAR</span></p>
+                  <p className="text-2xl font-black text-slate-900 dark:text-white leading-none">{projects.reduce((a,b) => a + b.contractValue, 0).toLocaleString()} <span className="text-xs font-bold text-slate-400">SAR</span></p>
               </div>
               <div className="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-2xl text-amber-600">
                   <DollarSign className="w-6 h-6" />
@@ -125,17 +125,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
       {summary && (
           <div className="bg-amber-50 dark:bg-slate-800/50 border-2 border-amber-200 dark:border-slate-700 p-6 rounded-3xl shadow-inner relative overflow-hidden animate-slide-up">
-              <h3 className="font-black text-amber-800 dark:text-amber-400 flex items-center gap-2 mb-4 text-lg">
+              <h3 className="font-black text-amber-800 dark:text-amber-400 flex items-center gap-2 mb-4 text-base">
                   <BrainCircuit className="w-5 h-5" /> AI STRATEGIC ANALYSIS
               </h3>
-              <div className="prose prose-slate dark:prose-invert max-w-none text-sm text-slate-800 dark:text-slate-300 whitespace-pre-wrap leading-relaxed font-bold">
+              <div className="prose prose-slate dark:prose-invert max-w-none text-xs text-slate-800 dark:text-slate-300 whitespace-pre-wrap leading-relaxed font-bold">
                   {summary}
               </div>
           </div>
       )}
 
       <div className="mt-8">
-          <h3 className="text-xl font-black text-slate-800 dark:text-white mb-4 flex items-center gap-3 px-2">
+          <h3 className="text-lg font-black text-slate-800 dark:text-white mb-4 flex items-center gap-3 px-2">
               <div className="w-1.5 h-6 bg-amber-500 rounded-full"></div>
               {t('projects_management')}
           </h3>
@@ -151,6 +151,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
               correspondence={correspondence}
               setCorrespondence={setCorrespondence}
               expenses={expenses}
+              custody={[]}
+              paymentOrders={[]}
           />
       </div>
     </div>

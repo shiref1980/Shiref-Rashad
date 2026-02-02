@@ -21,6 +21,30 @@ const translations = {
     'login_button': 'دخول للنظام',
     'copyright': 'جميع الحقوق محفوظة للمهندس شريف رشاد © 2026',
     
+    // Messaging
+    'messages': 'الرسائل الفورية',
+    'no_chat_selected': 'اختر موظفاً لبدء المحادثة',
+    'type_message': 'اكتب رسالتك هنا...',
+    'send_message': 'إرسال',
+    'unread_messages': 'رسائل غير مقروءة',
+
+    // Attendance & Reminders
+    'attendance_reminder': 'تذكير: لم تقم بتسجيل الحضور لليوم حتى الآن!',
+    'checkout_reminder': 'تذكير: لا تنسى تسجيل الانصراف قبل المغادرة.',
+    'clock_in': 'تسجيل الحضور',
+    'clock_out': 'تسجيل الانصراف',
+    'attendance_status': 'حالة الحضور',
+    'working_hours': 'ساعات العمل',
+    'attendance_records': 'سجل الحضور',
+    'present': 'حاضر',
+    'late': 'متأخر',
+    'absent': 'غائب',
+    'leave': 'إجازة',
+    'attendance_and_payroll': 'الحضور والرواتب',
+    'actual_days': 'الأيام الفعلية',
+    'net_salary': 'صافي المستحق',
+    'salary_breakdown': 'تفاصيل الراتب',
+
     // General Actions
     'save': 'حفظ البيانات',
     'cancel': 'إلغاء',
@@ -59,21 +83,6 @@ const translations = {
     'profile': 'الملف الشخصي',
     'logout': 'تسجيل الخروج',
     'navigation': 'القائمة الرئيسية',
-
-    // Correspondence
-    'correspondence': 'المخاطبات',
-    'incoming': 'البريد الوارد',
-    'outgoing': 'البريد الصادر',
-    'ref_no': 'رقم المرجع',
-    'subject': 'الموضوع',
-    'sender': 'الجهة المرسلة',
-    'recipient_to': 'الجهة المرسل إليها',
-    'content': 'نص الخطاب',
-    'add_correspondence': 'إضافة خطاب جديد',
-    'click_to_upload': 'اضغط لرفع المرفقات',
-    'attachments': 'المرفقات',
-    'project_manager': 'مدير المشروع',
-    'general_correspondence': 'مخاطبات عامة',
 
     // Finance & Invoices
     'financial_position': 'المركز المالي',
@@ -152,7 +161,7 @@ const translations = {
     'license_image': 'صورة الرخصة',
     'client_documents': 'مستندات العميل',
 
-    // HR & Employee Levels
+    // HR
     'employee_directory': 'دليل الموظفين',
     'add_new_employee': 'إضافة موظف',
     'job_title': 'المسمى الوظيفي',
@@ -277,6 +286,11 @@ const translations = {
     'password': 'Password',
     'login_button': 'Login',
     'copyright': 'All rights reserved © 2026',
+    'messages': 'Instant Messaging',
+    'no_chat_selected': 'Select an employee to start chatting',
+    'type_message': 'Type your message...',
+    'send_message': 'Send',
+    'unread_messages': 'Unread Messages',
     'save': 'Save',
     'cancel': 'Cancel',
     'delete': 'Delete',
@@ -511,6 +525,21 @@ const translations = {
     'quantity': 'Quantity',
     'unit_price': 'Unit Price',
     'select_client': 'Select Client',
+    'attendance_reminder': 'Reminder: You haven\'t clocked in for today yet!',
+    'checkout_reminder': 'Reminder: Don\'t forget to clock out before leaving.',
+    'clock_in': 'Clock In',
+    'clock_out': 'Clock Out',
+    'attendance_status': 'Attendance Status',
+    'working_hours': 'Working Hours',
+    'attendance_records': 'Attendance Records',
+    'present': 'Present',
+    'late': 'Late',
+    'absent': 'Absent',
+    'leave': 'Leave',
+    'attendance_and_payroll': 'Attendance & Payroll',
+    'actual_days': 'Actual Days',
+    'net_salary': 'Net Salary',
+    'salary_breakdown': 'Salary Breakdown',
   }
 };
 

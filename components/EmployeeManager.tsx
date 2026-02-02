@@ -157,6 +157,7 @@ export const EmployeeManager: React.FC<Props> = ({ companyId, employees, setEmpl
       if (editingId) {
         setEmployees(prev => prev.map(e => e.id === editingId ? { ...e, ...formData, companyId: finalCompanyId } as Employee : e));
       } else {
+        // Fix: Added missing properties canLogin and usageMode to Employee object
         const employee: Employee = {
           id: Date.now().toString(),
           companyId: finalCompanyId,
@@ -177,7 +178,9 @@ export const EmployeeManager: React.FC<Props> = ({ companyId, employees, setEmpl
           personalPhoto: formData.personalPhoto,
           degreeDocument: formData.degreeDocument,
           contractDocument: formData.contractDocument,
-          notifications: []
+          notifications: [],
+          canLogin: formData.canLogin !== undefined ? formData.canLogin : true,
+          usageMode: formData.usageMode || 'FULL'
         };
         setEmployees(prev => [...prev, employee]);
       }

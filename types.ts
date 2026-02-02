@@ -19,6 +19,24 @@ export interface Company {
   poBox?: string;
 }
 
+export interface CompanyHRSettings {
+  companyId: string;
+  workStartTime: string; // HH:mm
+  workEndTime: string;   // HH:mm
+  allowedDelayMinutes: number;
+  delayPenaltyAmount: number; 
+  absencePenaltyRate: number; 
+}
+
+export interface ChatMessage {
+  id: string;
+  senderId: string;
+  receiverId: string;
+  content: string;
+  timestamp: string;
+  isRead: boolean;
+}
+
 export enum ProjectType {
   RESIDENTIAL = 'سكني',
   ENTERTAINMENT = 'ترفيهي',
@@ -37,7 +55,12 @@ export type DocumentCategory =
   'MECHANICAL' | 
   'ELECTRICAL' | 
   'INTERIOR' | 
-  'EXTERIOR';
+  'EXTERIOR' |
+  'LICENSE' |
+  'DEED' |
+  'INSURANCE' |
+  'DELEGATION' |
+  'ACKNOWLEDGMENT';
 
 export interface DocumentItem {
   id: string;
@@ -65,11 +88,11 @@ export interface ProjectItem {
   id: string;
   description: string;
   durationDays: number;
-  startDate?: string;
-  endDate?: string;
+  startDate: string;
+  endDate: string;
   estimatedCost: number;
-  progress?: number; 
-  status?: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED';
+  progress: number; 
+  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED';
 }
 
 export interface ProjectPayment {
@@ -103,6 +126,7 @@ export interface Project {
   assignedEmployeeIds?: string[];
   documents?: ProjectDocuments;
   extraDocuments?: DocumentItem[];
+  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'ON_HOLD';
 }
 
 export interface PaymentOrder {
@@ -115,13 +139,13 @@ export interface PaymentOrder {
   recipient: string;
   amount: number;
   paymentMethod: 'CASH' | 'CHECK' | 'TRANSFER';
-  paidFromAccountId?: string; // الحساب الذي تم الصرف منه
+  paidFromAccountId?: string; 
   description: string;
   companyId: string;
   status: 'DRAFT' | 'APPROVED' | 'PAID' | 'PENDING_EXCEPTION' | 'REJECTED';
   exceptionReason?: string;
   overrunAmount?: number;
-  linkedJournalEntryId?: string; // ربط بالقيد المحاسبي
+  linkedJournalEntryId?: string; 
 }
 
 export interface PriceOfferItem {
@@ -152,7 +176,8 @@ export interface PriceOffer {
   approvedBy?: string;
 }
 
-export type UserRole = 'ADMIN' | 'COMPANY_MANAGER' | 'EMPLOYEE';
+export type UserRole = 'ADMIN' | 'COMPANY_MANAGER' | 'DEPT_MANAGER' | 'SUPERVISOR' | 'EMPLOYEE' | 'WORKER';
+export type UsageMode = 'FULL' | 'ADD_ONLY';
 
 export interface Notification {
   id: string;
@@ -168,16 +193,16 @@ export interface Employee {
   employeeCode: string; 
   name: string;
   idNumber: string; 
-  idExpiryDate?: string; // تاريخ انتهاء الهوية
-  insuranceExpiryDate?: string; // انتهاء التأمين الطبي
-  contractExpiryDate?: string; // انتهاء العقد
+  idExpiryDate?: string; 
+  insuranceExpiryDate?: string; 
+  contractExpiryDate?: string; 
   phone?: string; 
   email: string;
   role: string; 
   department: string; 
   salary: number;
-  loanBalance: number; // رصيد السلف
-  vacationBalance: number; // رصيد الإجازات المستحق
+  loanBalance: number; 
+  vacationBalance: number; 
   companyId: string; 
   username?: string;
   password?: string;
@@ -187,6 +212,18 @@ export interface Employee {
   notifications?: Notification[];
   degreeDocument?: string;
   contractDocument?: string;
+  canLogin: boolean;
+  usageMode: UsageMode;
+}
+
+export interface AttendanceRecord {
+  id: string;
+  employeeId: string;
+  date: string; // YYYY-MM-DD
+  checkIn?: string; // ISO Time
+  checkOut?: string; // ISO Time
+  status: 'PRESENT' | 'LATE' | 'ABSENT' | 'ON_LEAVE';
+  notes?: string;
 }
 
 export interface CurrentUser {
@@ -197,6 +234,7 @@ export interface CurrentUser {
   companyId?: string; 
   avatar?: string;
   permissions?: string[];
+  usageMode: UsageMode;
 }
 
 export type AccountType = 'ASSET' | 'LIABILITY' | 'EQUITY' | 'REVENUE' | 'EXPENSE';
@@ -231,7 +269,7 @@ export interface JournalEntry {
   status: 'DRAFT' | 'POSTED';
   totalDebit: number;
   totalCredit: number;
-  relatedEntityId?: string; // ID of PaymentOrder, Invoice, etc.
+  relatedEntityId?: string; 
 }
 
 export interface InvoiceItem {
@@ -329,7 +367,7 @@ export interface CustodyTransaction {
   date: string;
   amount: number;
   projectId: string;
-  projectItemId: string; // البند المرتبط (خرسانة، عمالة، الخ)
+  projectItemId: string; 
   description: string;
   invoiceImage?: string;
   linkedJournalEntryId?: string;
@@ -345,8 +383,8 @@ export interface Custody {
   status: 'ACTIVE' | 'RETURNED';
   returnDate?: string;
   companyId: string;
-  projectId?: string; // ربط العهدة بمشروع محدد (اختياري)
-  transactions?: CustodyTransaction[]; // سجل المصروفات من العهدة
+  projectId?: string; 
+  transactions?: CustodyTransaction[]; 
 }
 
 export interface Supplier {
