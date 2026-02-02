@@ -1,0 +1,8 @@
+{
+  "name": "مجموعة حدود الإعمار EB",
+  "description": "نظام إدارة موارد المؤسسة لمجموعة حدود الإعمار (EB Group). يشمل شركات MMT، EB Design، و EB Concept.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
